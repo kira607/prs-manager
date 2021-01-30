@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Other
+.idea
+.vscode
+credentials/
+messages_examples/
