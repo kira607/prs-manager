@@ -133,3 +133,4 @@ dmypy.json
 .vscode
 credentials/
 messages_examples/
+secret.txt

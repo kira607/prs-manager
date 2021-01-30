@@ -1,10 +1,15 @@
 from flask import Flask, request
+from update_validator import is_valid_signature
 import git
+import os
 
 app = Flask(__name__)
 
 @app.route('/pull_updates', methods=['POST'])
 def pull_updates():
+    x_hub_signature = request.headers.get('X-Hub-Signature')
+    if not is_valid_signature(x_hub_signature, request.data, os.getenv('SECRET_TOKEN')):
+        print("Deploy failed")
     if request.method == 'POST':
         repo = git.Repo('.')
         origin = repo.remotes.origin
