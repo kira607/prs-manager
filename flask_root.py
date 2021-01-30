@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST'])
 def webhook():
     x_hub_signature = request.headers.get('X-Hub-Signature')
-    if not is_valid_signature(x_hub_signature, request.data, str(os.getenv('SECRET_TOKEN'))):
+    if not is_valid_signature(x_hub_signature, request.data, os.getenv('SECRET_TOKEN')):
         print("Deploy failed")
     if request.method == 'POST':
         repo = git.Repo('.')
@@ -20,4 +20,4 @@ def webhook():
 
 @app.route('/')
 def main():
-    return 'Hello World 6'
+    return 'Hello World!!'
