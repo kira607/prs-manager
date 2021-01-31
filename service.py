@@ -7,7 +7,7 @@ class Service:
         self.db_client = DbClient()
         self.mail_client = MailClient()
 
-    def get_table() -> Tuple[dict, int]:
+    def get_table(self) -> Tuple[dict, int]:
         code = 200
         try:
             response = DbClient.get_table()
@@ -17,10 +17,10 @@ class Service:
             code = 500
         return response, code
 
-    def webhook() -> Tuple[dict, int]:
+    def webhook(self) -> Tuple[dict, int]:
         pass
 
-    def __make_error_response(msg: str, code: int) -> dict:
+    def __make_error_response(self, msg: str, code: int) -> dict:
         return {
             "error": f"{msg}",
             "code": code

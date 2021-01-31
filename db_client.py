@@ -2,12 +2,12 @@ from MySQLdb import _mysql as mysql
 
 
 class DbClient:
-    def __init__():
+    def __init__(self):
         client = mysql.connect()
 
-    def get_table() -> dict:
+    def get_table(self) -> dict:
         return {"table status": "empty"}
 
-    def update(data: dict) -> None:
+    def update(self, data: dict) -> None:
         pass
 
