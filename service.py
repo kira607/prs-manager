@@ -10,7 +10,7 @@ class Service:
     def get_table(self) -> Tuple[dict, int]:
         code = 200
         try:
-            response = DbClient.get_table()
+            response = self.db_client.get_table()
         except Exception as e:
             msg = f"Could not load table. Error: {e}"
             response = __make_error_response()
