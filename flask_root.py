@@ -12,7 +12,7 @@ SECRET_TOKEN = os.getenv('SECRET_TOKEN')
 
 
 @app.route('/table', methods=['GET'])
-def get_table();
+def get_table():
     resp, code = service.get_table()
     response = make_response(resp, code)
     return response
