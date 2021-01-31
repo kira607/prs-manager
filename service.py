@@ -1,6 +1,6 @@
 from db_client import DbClient
 from mail_client import MailClient
-from Flask import request as flask_request
+from flask import request as flask_request
 from update_validator import is_valid_signature
 import git
 import os
