@@ -3,7 +3,8 @@ from MySQLdb import _mysql as mysql
 
 class DbClient:
     def __init__(self):
-        client = mysql.connect()
+        # client = mysql.connect()
+        pass
 
     def get_table(self) -> dict:
         return {"table status": "empty"}
