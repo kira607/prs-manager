@@ -5,15 +5,16 @@ import os
 
 app = Flask(__name__)
 
+SECRET_TOKEN = os.getenv('SECRET_TOKEN')
+
 @app.route('/pull_updates', methods=['POST'])
 def pull_updates():
     x_hub_signature = request.headers.get('X-Hub-Signature')
-    secret = os.getenv('SECRET_TOKEN')
     if secret is None:
         print("Secret is None. Deploy failed...")
         return "Update server: failed (secret token is not configured)", 500
     else:
-        if not is_valid_signature(x_hub_signature, request.data, secret):
+        if not is_valid_signature(x_hub_signature, request.data, SECRET_TOKEN):
             print("Deploy failed")
     if request.method == 'POST':
         repo = git.Repo('.')
