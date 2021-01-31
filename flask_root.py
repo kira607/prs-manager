@@ -7,8 +7,8 @@ app = Flask(__name__)
 
 SECRET_TOKEN = os.getenv('SECRET_TOKEN')
 
-@app.route('/pull_updates', methods=['POST'])
-def pull_updates():
+@app.route('/webhook', methods=['POST'])
+def webhook():
     x_hub_signature = request.headers.get('X-Hub-Signature')
     if secret is None:
         print("Secret is None. Deploy failed...")
