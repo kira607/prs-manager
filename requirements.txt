@@ -1,0 +1,4 @@
+flask
+exchangelib
+python-dotenv
+gitpython
