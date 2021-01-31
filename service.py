@@ -1,5 +1,6 @@
 from db_client import DbClient
 from mail_client import MailClient
+from typing import Tuple
 
 class Service:
     def __init__(self):
@@ -15,7 +16,7 @@ class Service:
             response = __make_error_response()
             code = 500
         return response, code
-        
+
     def webhook() -> Tuple[dict, int]:
         pass
 
