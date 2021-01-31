@@ -2,3 +2,4 @@ flask
 exchangelib
 python-dotenv
 gitpython
+mysqlclient
