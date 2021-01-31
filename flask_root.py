@@ -1,11 +1,22 @@
-from flask import Flask, request
+from flask import Flask, request, make_response
 from update_validator import is_valid_signature
+from service import Service
 import git
 import os
 
 app = Flask(__name__)
 
+service = Service()
+
 SECRET_TOKEN = os.getenv('SECRET_TOKEN')
+
+
+@app.route('/table', methods=['GET'])
+def get_table();
+    resp, code = service.get_table()
+    response = make_response(resp, code)
+    return response
+
 
 @app.route('/webhook', methods=['POST'])
 def webhook():

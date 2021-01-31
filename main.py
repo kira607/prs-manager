@@ -6,6 +6,7 @@ from mail_client import MailClient
 CREDENTIALS_PATH = "credentials/luxoft.json"
 
 
+
 def parse_message(msg: dict) -> Optional[dict]:
     try:
         text = None
@@ -35,6 +36,10 @@ def parse_message(msg: dict) -> Optional[dict]:
         return None
 
 
+def parse_notification(notif: dict) -> dict:
+    pass
+
+
 def load_credentials(path: str = CREDENTIALS_PATH) -> dict:
     with open(CREDENTIALS_PATH, "r") as file:
         raw = file.read()
@@ -46,6 +51,6 @@ if __name__ == "__main__":
     client = MailClient()
     client.set_credentials(load_credentials())
     inbox = client.get_inbox()
-    # print(f"found {len(inbox)} messages")
+    print(f"found {len(inbox)} messages")
     for message in inbox:
         msg_dict = parse_message(message)
