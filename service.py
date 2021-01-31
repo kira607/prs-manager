@@ -37,7 +37,7 @@ class Service:
             repo = git.Repo('.')
             origin = repo.remotes.origin
             origin.pull()
-            response 'Update server: success'
+            response = 'Update server: success'
         else:
             code = 400
             response = 'Wrong request type'
