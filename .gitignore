@@ -131,6 +131,5 @@ dmypy.json
 # Other
 .idea
 .vscode
-credentials/
 messages_examples/
 secret.txt
