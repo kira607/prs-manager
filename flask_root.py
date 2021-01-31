@@ -10,7 +10,7 @@ SECRET_TOKEN = os.getenv('SECRET_TOKEN')
 @app.route('/webhook', methods=['POST'])
 def webhook():
     x_hub_signature = request.headers.get('X-Hub-Signature')
-    if secret is None:
+    if SECRET_TOKEN is None:
         print("Secret is None. Deploy failed...")
         return "Update server: failed (secret token is not configured)", 500
     else:
