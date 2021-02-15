@@ -19,6 +19,19 @@ def webhook():
     response = make_response(resp, code)
     return response
 
+
 @app.route('/')
 def main():
-    return 'Hello World! webhook test r'
+    page = """
+<!DOCTYPE html>
+
+<head>
+    <title>Hello</title>
+</head>
+
+<body>
+    <h1>Lada Pidr</h1>
+</body>
+    """
+    return make_response(page, 200)
+    # return 'Hello World! webhook test r'

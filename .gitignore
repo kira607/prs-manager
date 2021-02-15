@@ -133,3 +133,5 @@ dmypy.json
 .vscode
 messages_examples/
 secret.txt
+queueries.txt
+api.yaml
