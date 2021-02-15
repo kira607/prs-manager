@@ -12,11 +12,22 @@ class Service:
         self.db_client = DbClient()
         self.mail_client = MailClient()
 
+    def hello(self) -> Tuple[Union[dict, str], int]:
+        code = 200
+        try:
+            with open("html/hello.html", "r") as f:
+                response = f.read()
+        except Exception as e:
+            msg = f"Could not load hello. Error: {e}"
+            response = __make_error_response()
+            code = 500
+        return response, code
+
     def get_table(self) -> Tuple[Union[dict, str], int]:
         code = 200
         try:
             data = self.db_client.get_table()
-            with open("html/hello.html", "r") as f:
+            with open("html/table.html", "r") as f:
                 content = f.read()
             # merge data with page
             response = content

@@ -22,16 +22,6 @@ def webhook():
 
 @app.route('/')
 def main():
-    page = """
-<!DOCTYPE html>
-
-<head>
-    <title>Hello</title>
-</head>
-
-<body>
-    <h1>Hello</h1>
-</body>
-    """
-    return make_response(page, 200)
-    # return 'Hello World! webhook test r'
+    resp, code = service.hello()
+    response = make_response(resp, code)
+    return response
