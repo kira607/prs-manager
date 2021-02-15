@@ -30,7 +30,7 @@ def main():
 </head>
 
 <body>
-    <h1>Lada Pidr</h1>
+    <h1>Hello</h1>
 </body>
     """
     return make_response(page, 200)

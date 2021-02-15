@@ -15,7 +15,11 @@ class Service:
     def get_table(self) -> Tuple[Union[dict, str], int]:
         code = 200
         try:
-            response = self.db_client.get_table()
+            data = self.db_client.get_table()
+            with open("html/hello.html", "r") as f:
+                content = f.read()
+            # merge data with page
+            response = content
         except Exception as e:
             msg = f"Could not load table. Error: {e}"
             response = __make_error_response()
