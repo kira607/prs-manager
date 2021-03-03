@@ -2,6 +2,7 @@ from flask import Flask, request, make_response
 from flask_admin import Admin
 from flask_sqlalchemy import SQLAlchemy
 from service import Service
+from db_client import DbClient
 import os
 
 host = os.getenv('DB_HOST')
