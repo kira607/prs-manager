@@ -1,13 +1,25 @@
 from flask import Flask, request, make_response
 from flask_admin import Admin
+from flask_sqlalchemy import SQLAlchemy
 from service import Service
+import os
+
+host = os.getenv('DB_HOST')
+user = os.getenv('DB_USER')
+passwd = os.getenv('DB_PASSWORD')
+db_name = os.getenv('DB_NAME')
+
+class FlaskAppConfig:
+    FLASK_ADMIN_SWATCH = 'cerulean'
+    SQLALCHEMY_DATABASE_URI = f'mysql+mysqlconnector://{user}:{passwd}@{db_name}/{db}'
 
 app = Flask(__name__)
-app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
+app.config.from_object(FlaskAppConfig)
 
 admin = Admin(app, name='prs-manager')
-
-service = Service()
+db = SQLAlchemy(app)
+db_client = DbClient(db)
+service = Service(db_client)
 
 
 @app.route('/table', methods=['GET'])

@@ -7,9 +7,9 @@ import os
 from typing import Tuple, Union
 
 class Service:
-    def __init__(self):
+    def __init__(self, db_client: DbClient):
         self.SECRET_TOKEN = os.getenv('SECRET_TOKEN')
-        self.db_client = DbClient()
+        self.db_client = db_client
         self.mail_client = MailClient()
 
     def hello(self) -> Tuple[Union[dict, str], int]:
