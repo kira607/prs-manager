@@ -11,7 +11,7 @@ db_name = os.getenv('DB_NAME')
 
 class FlaskAppConfig:
     FLASK_ADMIN_SWATCH = 'cerulean'
-    SQLALCHEMY_DATABASE_URI = f'mysql+mysqlconnector://{user}:{passwd}@{db_name}/{db}'
+    SQLALCHEMY_DATABASE_URI = f'mysql+mysqlconnector://{user}:{passwd}@{host}/{db_name}'
 
 app = Flask(__name__)
 app.config.from_object(FlaskAppConfig)
