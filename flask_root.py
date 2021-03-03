@@ -1,7 +1,11 @@
 from flask import Flask, request, make_response
+# from flask_admin import Admin
 from service import Service
 
 app = Flask(__name__)
+
+# app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
+# admin = Admin(app, name='prs-manager')
 
 service = Service()
 

@@ -23,8 +23,11 @@ def parse_message(msg: dict) -> Optional[dict]:
 
         text = text[text.find("{"):-1]
         text = text.strip()
+
+        # drop non ascii characters
         text = text.encode('ascii', 'ignore')
         text = text.decode('utf-8')
+        
         d = json.loads(text, strict=False)
         try:
             d["Message"] = json.loads(d["Message"].replace('\r\n', ' '))
