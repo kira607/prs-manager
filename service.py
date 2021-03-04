@@ -1,22 +1,22 @@
 from db_client import DbClient
 from mail_client import MailClient
-from flask import request as flask_request
+from flask import request as flask_request, render_template
 from update_validator import is_valid_signature
 import git
 import os
 from typing import Tuple, Union
+from config import DbConfig
 
 class Service:
-    def __init__(self, db_client: DbClient):
+    def __init__(self):
         self.SECRET_TOKEN = os.getenv('SECRET_TOKEN')
-        self.db_client = db_client
+        self.db_client = DbClient()
         self.mail_client = MailClient()
 
     def hello(self) -> Tuple[Union[dict, str], int]:
         code = 200
         try:
-            with open("html/hello.html", "r") as f:
-                response = f.read()
+            response = render_template('hello.html')
         except Exception as e:
             msg = f"Could not load hello. Error: {e}"
             response = __make_error_response()
@@ -27,10 +27,7 @@ class Service:
         code = 200
         try:
             data = self.db_client.get_table()
-            with open("html/table.html", "r") as f:
-                content = f.read()
-            # merge data with page
-            response = content
+            response = render_template('table.html')
         except Exception as e:
             msg = f"Could not load table. Error: {e}"
             response = __make_error_response()

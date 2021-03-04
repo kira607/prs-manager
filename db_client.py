@@ -1,9 +1,10 @@
 from flask_sqlalchemy import SQLAlchemy
+from app import app
 
 
 class DbClient:
     def __init__(self, db: SQLAlchemy):
-        self.db = db
+        self.db = SQLAlchemy(app)
         db.create_all()
         self.session = db.session
 
