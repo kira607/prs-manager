@@ -1,7 +1,7 @@
 flask
 flask_admin
 flask_sqlalchemy
-mysql-connector
+mysql-connector-python
 exchangelib
 python-dotenv
 gitpython

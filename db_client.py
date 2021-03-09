@@ -1,15 +1,17 @@
 from flask_sqlalchemy import SQLAlchemy
-from app import app
+from app import db
+from models import PullRequests
 
 
 class DbClient:
-    def __init__(self, db: SQLAlchemy):
-        self.db = SQLAlchemy(app)
-        db.create_all()
-        self.session = db.session
+    def __init__(self):
+        self.db = db
+        # self.db.create_all()
+        # self.session = db.session
 
     def get_table(self) -> dict:
-        return {"table status": "empty"}
+        pull_requests = PullRequests.query.all()
+        return pull_requests
 
     def update(self, data: dict) -> None:
         pass
