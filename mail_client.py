@@ -1,16 +1,12 @@
 from exchangelib import Credentials, Account
+from config import MailClientConfig as _config
 
 
 class MailClient:
     def __init__(self):
-        self.credentials = None
+        self.credentials = Credentials(_config.username, _config.password)
         self.account = None
-        self.target_folder = "AWSCodeCommitNotifications"
-
-    def set_credentials(self, credentials: dict) -> None:
-        username = credentials["username"]
-        password = credentials["password"]
-        self.credentials = Credentials(username, password)
+        self.target_folder = 'AWSCodeCommitNotifications'
 
     def get_inbox(self) -> list:
         self.__login()
@@ -22,11 +18,11 @@ class MailClient:
         for item in notifications_folder.all():
             messages.append(
                 {
-                    "time": str(item.datetime_received),
-                    "subject": str(item.subject),
-                    "sender": str(item.sender),
-                    "body": str(item.body),
-                    "body-type": item.body.body_type
+                    'time': str(item.datetime_received),
+                    'subject': str(item.subject),
+                    'sender': str(item.sender),
+                    'body': str(item.body),
+                    'body-type': item.body.body_type
                 }
             )
         return messages

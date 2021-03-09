@@ -3,9 +3,6 @@ from typing import Optional
 from bs4 import BeautifulSoup
 from mail_client import MailClient
 
-CREDENTIALS_PATH = "credentials/luxoft.json"
-
-
 
 def parse_message(msg: dict) -> Optional[dict]:
     try:
@@ -41,13 +38,6 @@ def parse_message(msg: dict) -> Optional[dict]:
 
 def parse_notification(notif: dict) -> dict:
     pass
-
-
-def load_credentials(path: str = CREDENTIALS_PATH) -> dict:
-    with open(CREDENTIALS_PATH, "r") as file:
-        raw = file.read()
-    credentials = json.loads(raw)
-    return credentials
 
 
 if __name__ == "__main__":

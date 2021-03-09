@@ -135,3 +135,5 @@ messages_examples/
 secret.txt
 queueries.txt
 api.yaml
+.local-env
+local_dev.py 
